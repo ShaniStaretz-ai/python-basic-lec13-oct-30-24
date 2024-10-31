@@ -1,6 +1,6 @@
 # ex a:
 students: int = int(input("enter total number of students:"))
-students_per_class = 30
+students_per_class: int = 30
 print(
     f"there are full {students // students_per_class} classes and 1 class with {students % students_per_class} students ")
 
@@ -27,10 +27,8 @@ for x in range(1, 200):
     elif x % 2 == 0:
         continue
     is_prime: bool = True
-    divider = 3
+    divider: int = 3
     while divider <= (x ** 0.5 + 1):
-        # for divider in range(2,x**0.5+1):
-
         if x % divider == 0:
             is_prime = False
             break
@@ -39,22 +37,22 @@ for x in range(1, 200):
         print(x, end=" ")
 
 # ex d:
-from hw.my_func import get_answer_char_by_index, get_answer_index_by_char
 
 SENTINEL: str = 'x'
 results: list[int] = [0] * 4  # [a,b,c,d]
+options = ['a', 'b', 'c', 'd']
 while True:
-    answer = input("enter your answer (a,b,c,d), if you want to stop enter x:")
+    answer = input("enter your answer (a,b,c,d), if you want to stop enter x:").lower()
     if answer == SENTINEL:
         print("goodbye")
         break
     if answer not in ['a', 'b', 'c', 'd']:
         print("not an option")
         continue
-    results[get_answer_index_by_char(answer)] += 1
+    results[options.index(answer)] += 1
 
 for i in range(len(results)):
-    print(f"{results[i]} students selected answer {get_answer_char_by_index(i)} ")
+    print(f"{results[i]} students selected answer {options[i]} ")
 
-print(f"most students answer {get_answer_char_by_index(results.index(max(results)))}")
-print(f"least students answer {get_answer_char_by_index(results.index(min(results)))}")
+print(f"most students answer {options[results.index(max(results))]}")
+print(f"least students answer {options[results.index(min(results))]}")
