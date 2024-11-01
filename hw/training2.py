@@ -2,7 +2,7 @@
 students: int = int(input("enter total number of students:"))
 students_per_class: int = 30
 print(
-    f"there are full {students // students_per_class} classes and 1 class with {students % students_per_class} students ")
+    f"there are full {students // students_per_class} class{'es' if students // students_per_class > 1 else ''} {f'and 1 class with {students % students_per_class} students' if students % students_per_class else ''}")
 
 # ex b
 number: int = 0
@@ -14,7 +14,10 @@ while True:
         break
     except ValueError as e:
         print(f"ERROR- invalid number:{e},try again")
-print("reverse number:", number % 10 * 10 + number // 10)
+if number % 10 > number // 10:
+    print("reverse number:", number % 10 * 10 + number // 10)
+else:
+    print("reverse number:", number)
 
 # ex c
 print("prime numbers in range (1,200):")
